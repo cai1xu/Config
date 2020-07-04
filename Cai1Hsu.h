@@ -32,7 +32,7 @@
 #define pow2(x) (1<<(x))
 #define foreach(a,b) for(auto a : b)
 #define in :
-//#define a[] vector<a>
+#define vec(a) vector<a>
 
 using namespace std;
 
@@ -71,7 +71,7 @@ int traversefind(vector<int> a,int f){for(int i = 0;i < a.size();i++)if(a[i] == 
 
 int findIndex(vector<int> a,int i,bool ordered){return ordered?binaryfind(a,i):traversefind(a,i);}
 
-long long mypow(int n,int m){if(m==0)return 1;else if(m==1)return n;else if(m%2==0)return f(n*n,m/2);return f(n*n,m/2)*n;}
+long long mypow(int n,int m){if(m==0)return 1;else if(m==1)return n;else if(m%2==0)return mypow(n*n,m/2);return mypow(n*n,m/2)*n;}
 int quick_pow(int x,int m){long long answer = mypow(x,m);return answer <= INTMAX?answer:0;}
 //----------------------------end-----------------------------
 
