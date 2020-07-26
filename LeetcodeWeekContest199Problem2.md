@@ -134,4 +134,7 @@ class Solution:
         return step + 1
 ```
 
+时间复杂度：*O(n)* (n为字符串长度，我们仅遍历过一次数组)
+时间复杂度：*O(1)* (我们仅使用常数空间)
+
 我比赛中的提交:https://leetcode-cn.com/api/submissions/91528073/
