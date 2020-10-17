@@ -1,35 +1,38 @@
 #include <bits/stdc++.h>
-#define Cai1Hsu "Your dad"
+#define Cai1Hsu Your dad
 #define pf push_front
 #define pb push_back
 #define add append
 #define var auto
+#define in :
+#define MAIN int main()
 #define INTMAX 2147483647
 #define INTMIN -2147483648
-#define all(a) begin(a),end(a)
-#define rall(a) rbegin(a),rend(a)
-#define pii pair<int,int>
+#define all(a) begin(a), end(a)
+#define rall(a) rbegin(a), rend(a)
+#define pii pair<int, int>
 #define len(x) ((int)x.size())
 #define mkpair make_pair
-#define sortq(A) sort(A.begin(),A.end())
-#define pow2(x) (1<<(x))
-#define each(a,b) for(auto a : b)
-#define foreach(a,b) for(auto a : b)
-#define rsort(a) sort(a.rbegin(),a,rend());
+#define sortq(A) sort(A.begin(), A.end())
+#define pow2(x) (1 << (x))
+#define each(a, b) for (auto a : b)
+#define foreach(a, b) for (auto a : b)
+#define rsort(a) sort(a.rbegin(), a, rend());
 #define null NULL
-#define nptr nullptr
 #define fi first
 #define se second
-#define MOD (1000000007)
+#define MOD (100000007)
 #define ll long long
 #define fl float
 #define vi vector<int>
 using namespace std;
 
-class Solution{
-  
-};
-int main(){
-  /*Your code here.*/
+int main()
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+
+
 	return 0;
 }
