@@ -4,8 +4,6 @@
 #define pb push_back
 #define add append
 #define var auto
-#define in :
-#define MAIN int main()
 #define INTMAX 2147483647
 #define INTMIN -2147483648
 #define all(a) begin(a),end(a)
@@ -19,9 +17,10 @@
 #define foreach(a,b) for(auto a : b)
 #define rsort(a) sort(a.rbegin(),a,rend());
 #define null NULL
+#define nptr nullptr
 #define fi first
 #define se second
-#define MOD (1e9+7)
+#define MOD (1000000007)
 #define ll long long
 #define fl float
 #define vi vector<int>
