@@ -12,13 +12,15 @@
 #define rall(a) rbegin(a), rend(a)
 #define pii pair<int, int>
 #define len(x) ((int)x.size())
+#define length size()
 #define mkpair make_pair
 #define sortq(A) sort(A.begin(), A.end())
 #define pow2(x) (1 << (x))
 #define each(a, b) for (auto a : b)
 #define foreach(a, b) for (auto a : b)
-#define rsort(a) sort(a.rbegin(), a, rend());
+#define rsort(a) sort(a.rbegin(), a.rend())
 #define null NULL
+#define npr nullptr
 #define fi first
 #define se second
 #define MOD (100000007)
@@ -32,7 +34,6 @@ int main()
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	cout.tie(0);
-
 
 	return 0;
 }
