@@ -16,6 +16,7 @@
 #define pow2(x) (1 << (x))
 #define each(a, b) for (auto a : b)
 #define foreach(a, b) for (auto a : b)
+#define range(begin,end) for(int i = begin;i <= end;i++)
 #define rsort(a) sort(a.rbegin(), a.rend())
 #define null NULL
 #define npr nullptr
